@@ -17,10 +17,15 @@ class GitCommand {
         */
         let files = Object.keys(this.working_directory.new_changes);
         let file_count = Object.keys(this.working_directory.new_changes).length;
-        let status = "You have " +file_count+ " change/s."
+        let status = "You have " +file_count+ " change/s.\n"
         if(file_count !== 0) {
             for(let i=0; i<file_count; i++){
-                status += "\n"+files[i];
+                if(i == file_count-1) {
+                    status += files[i];
+                }
+                else {
+                    status += files[i]+"\n";
+                }
             }
         }
         return status;
