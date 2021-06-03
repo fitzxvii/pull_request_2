@@ -11,10 +11,6 @@ class GitCommand {
 
     //Command: git status
     status(){        
-        /*
-            For assignment #1:
-            Create logic here and run unit testing.
-        */
         let files = Object.keys(this.working_directory.new_changes);
         let file_count = Object.keys(this.working_directory.new_changes).length;
         let status = "You have " +file_count+ " change/s.\n"
