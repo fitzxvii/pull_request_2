@@ -11,17 +11,13 @@ class GitCommand {
 
     //Command: git status
     status(){        
-        /*
-            For assignment #1:
-            Create logic here and run unit testing.
-        */
         let files = Object.keys(this.working_directory.new_changes);
         let file_count = Object.keys(this.working_directory.new_changes).length;
         let status = "You have " +file_count+ " change/s.\n"
         if(file_count !== 0) {
             for(let i=0; i<file_count; i++){
                 if(i == file_count-1) {
-                    status += files[i]
+                    status += files[i];
                 }
                 else {
                     status += files[i]+"\n";
@@ -42,6 +38,12 @@ class GitCommand {
         /*
             Create logic here and run unit testing.
         */
+
+        else if (path_file == "*"){
+            this.staging.push(modified_files['views/index.html']);
+            delete modified_files['views/index.html'];
+        }
+
         else if (path_file == "."){
             let files = Object.keys(modified_files);
             let file_count = Object.keys(modified_files).length;
@@ -50,6 +52,7 @@ class GitCommand {
                 this.staging.push(modified_files[files[i]]);
                 delete modified_files[files[i]];
             }
+
         }
         else{
             return `Failed to add ${path_file}! File is not modified or missing.`;
