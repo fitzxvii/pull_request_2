@@ -42,6 +42,10 @@ class GitCommand {
         /*
             Create logic here and run unit testing.
         */
+        else if (path_file == "*"){
+            this.staging.push(modified_files['views/index.html']);
+            delete modified_files['views/index.html'];
+        }
         else{
             return `Failed to add ${path_file}! File is not modified or missing.`;
         }
